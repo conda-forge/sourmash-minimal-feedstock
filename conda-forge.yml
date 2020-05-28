@@ -1,8 +1,5 @@
 conda_forge_output_validation: true
 linux_ppc64le:
   enabled: True
-linux_aarch64:
-  enabled: True
 provider:
   linux_ppc64le: default
-  linux_aarch64: default
