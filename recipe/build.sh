@@ -8,8 +8,6 @@ if [ "$(uname)" == "Darwin" ]; then
     SOEXT=dylib
 fi
 
-export RUSTC_WRAPPER=$(which sccache)
-
 $PYTHON -m pip install --no-deps --ignore-installed -vv .
 
 cp include/sourmash.h ${PREFIX}/include/
