@@ -245,6 +245,3 @@ Feedstock Maintainers
 * [@ctb](https://github.com/ctb/)
 * [@luizirber](https://github.com/luizirber/)
 
-
-<!-- dummy commit to enable rerendering -->
-
