@@ -5,7 +5,7 @@ Home: https://github.com/dib-lab/sourmash
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Compute and compare MinHash signatures for DNA data sets.
 
