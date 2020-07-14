@@ -1,4 +1,4 @@
-{% set version = "3.3.1" %}
+{% set version = "3.4.0" %}
 
 package:
   name: sourmash-minimal
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/s/sourmash/sourmash-{{ version }}.tar.gz
-  sha256: 8d3404f095a90ed3365c429104f3a9526ef3a3b4db8c9bd944f4b0cde8b59f28
+  sha256: 8e2aeb45ae82d5864c6c19f6944ba9492128936745d21804d08f6add23d0a166
 
 build:
   entry_points:
     - sourmash = sourmash.__main__:main
-  number: 2
-  missing_dso_whitelist:          # [osx]
+  number: 0
+  missing_dso_whitelist:   # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
 
 requirements:
@@ -46,7 +46,7 @@ test:
 
 about:
   home: https://github.com/dib-lab/sourmash
-  summary: 'Compute and compare MinHash signatures for DNA data sets.'
+  summary: Compute and compare MinHash signatures for DNA data sets.
   description: |
     This is a minimal version that avoids heavy dependencies and is as cross-platform
     as possible. For the complete version check the sourmash package in bioconda.
