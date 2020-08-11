@@ -4,5 +4,5 @@ linux_ppc64le:
 linux_aarch64:
   enabled: true
 provider:
-  linux_ppc64le: azure
-  linux_aarch64: azure
+  linux_ppc64le: default
+  linux_aarch64: default
