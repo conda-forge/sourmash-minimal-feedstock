@@ -21,7 +21,7 @@ requirements:
     - {{ compiler('m2w64_c') }}        # [win]
     - rust >=1.37.0
   host:
-    - python
+    - python >= 3.7
     - pip
     - setuptools >=38.6.0
     - milksnake
@@ -29,9 +29,8 @@ requirements:
     - setuptools_scm_git_archive
 
   run:
-    - python
+    - python >= 3.7
     - setuptools
-    - enum34  # [py27]
     - screed >=1.0
     - cffi >=1.14
     - deprecation >=2.0.6
