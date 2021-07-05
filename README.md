@@ -1,7 +1,7 @@
 About sourmash-minimal
 ======================
 
-Home: https://github.com/dib-lab/sourmash
+Home: https://github.com/sourmash-bio/sourmash
 
 Package license: BSD-3-Clause
 
@@ -9,7 +9,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sourmash-minima
 
 Summary: Compute and compare MinHash signatures for DNA data sets.
 
-Development: https://github.com/dib-lab/sourmash
+Development: https://github.com/sourmash-bio/sourmash
 
 Documentation: http://sourmash.bio/
 
@@ -161,6 +161,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>win_64_python3.7.____73_pypy</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9878&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/sourmash-minimal-feedstock?branchName=master&jobName=win&configuration=win_64_python3.7.____73_pypy" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>win_64_python3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9878&branchName=master">
@@ -282,6 +289,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@bluegenes](https://github.com/bluegenes/)
 * [@ctb](https://github.com/ctb/)
 * [@luizirber](https://github.com/luizirber/)
 
