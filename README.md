@@ -1,7 +1,7 @@
 About sourmash-minimal
 ======================
 
-Home: https://github.com/dib-lab/sourmash
+Home: https://github.com/sourmash-bio/sourmash
 
 Package license: BSD-3-Clause
 
@@ -9,7 +9,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sourmash-minima
 
 Summary: Compute and compare MinHash signatures for DNA data sets.
 
-Development: https://github.com/dib-lab/sourmash
+Development: https://github.com/sourmash-bio/sourmash
 
 Documentation: http://sourmash.bio/
 
@@ -282,6 +282,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@bluegenes](https://github.com/bluegenes/)
 * [@ctb](https://github.com/ctb/)
 * [@luizirber](https://github.com/luizirber/)
 
