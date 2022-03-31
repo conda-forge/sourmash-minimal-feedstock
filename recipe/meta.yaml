@@ -11,23 +11,22 @@ source:
 build:
   entry_points:
     - sourmash = sourmash.__main__:main
-  number: 0
+  number: 1
   missing_dso_whitelist:   # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
-  skip: true  # [py<37]
+  skip: true  # [py<38]
 
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    # Pinning rust due to https://github.com/conda-forge/rust-feedstock/issues/73
-    - rust >=1.37.0,<=1.48
+    - rust >=1.48.0
   host:
     - python
     - pip
-    - setuptools >=38.6.0
+    - setuptools >=48,<60
     - milksnake
-    - setuptools_scm >=3.2.0
+    - setuptools_scm >=4,<6
     - setuptools_scm_git_archive
 
   run:
@@ -36,7 +35,7 @@ requirements:
     - screed >=1.0.5
     - cffi >=1.14
     - deprecation >=2.0.6
-    - cachetools >=4.2.1
+    - cachetools >=4.2.1,<5
     - numpy
 
 test:
