@@ -47,7 +47,6 @@ test:
   commands:
     - sourmash --help
     - sourmash info
-    - sourmash info 2>&1 | grep "{{ version }}"
 
 about:
   home: https://github.com/sourmash-bio/sourmash
