@@ -11,11 +11,7 @@ Summary: Compute and compare MinHash signatures for DNA data sets.
 
 Development: https://github.com/sourmash-bio/sourmash
 
-Documentation: http://sourmash.bio/
-
-This is a minimal version that avoids heavy dependencies and is as cross-platform
-as possible. For the complete version check the sourmash package in bioconda.
-
+Documentation: https://sourmash.bio/
 
 Current build status
 ====================
