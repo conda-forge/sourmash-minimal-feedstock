@@ -11,7 +11,7 @@ source:
 build:
   entry_points:
     - sourmash = sourmash.__main__:main
-  number: 3
+  number: 4
   missing_dso_whitelist:   # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
   skip: true  # [py<38]
@@ -24,6 +24,7 @@ requirements:
     - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - rust >=1.48.0
+    - rust-std-aarch64-apple-darwin        # [target_platform == 'osx-arm64']
   host:
     - python
     - pip
