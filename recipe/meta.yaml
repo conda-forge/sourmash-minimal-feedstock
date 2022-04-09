@@ -23,8 +23,7 @@ requirements:
     - cffi                                   # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - rust >=1.48.0
-    - rust-std-aarch64-apple-darwin        # [target_platform == 'osx-arm64']
+    - {{ compiler('rust') }} >=1.48.0
   host:
     - python
     - pip
