@@ -43,6 +43,7 @@ requirements:
     - numpy
     - matplotlib-base
     - scipy
+    - bitstring >=3.1.9,<4
 
 test:
   imports:
