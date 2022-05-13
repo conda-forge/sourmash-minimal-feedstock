@@ -7,6 +7,8 @@ package:
 source:
   url: https://pypi.io/packages/source/s/sourmash/sourmash-{{ version }}.tar.gz
   sha256: 00a9a0dd26e538c2518db3e2aa5fd4b4bd8be9650f7427d3c93a8022798412de
+  patches:
+    - 001-temp-fix-for-setup-py.diff
 
 build:
   entry_points:

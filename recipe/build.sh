@@ -12,22 +12,12 @@ cp include/sourmash.h ${PREFIX}/include/
 
 cargo build --release
 
-## A bit of an workaround, but make other parts of the script more consistent.
-## These four cp commands can be merged into
-# cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.${SOEXT} ${PREFIX}/lib/
-# cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.a ${PREFIX}/lib/
-## once sourmash 4.3.0+ is released
-
-cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.${SOEXT} target/release/libsourmash.${SOEXT}
-cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.a target/release/libsourmash.a
-
-cp target/release/libsourmash.a ${PREFIX}/lib/
-cp target/release/libsourmash.${SOEXT} ${PREFIX}/lib/
-##
+cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.${SOEXT} ${PREFIX}/lib/
+cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.a ${PREFIX}/lib/
 
 ## This will work on currently unreleased sourmash, wait for 4.3.0+
-#export NO_BUILD=1
-#export DYLD_LIBRARY_PATH=${PREFIX}/lib
+export NO_BUILD=1
+export DYLD_LIBRARY_PATH=${PREFIX}/lib
 
 $PYTHON -m pip install --no-deps --ignore-installed -vv .
 
