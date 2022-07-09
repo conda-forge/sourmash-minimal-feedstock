@@ -27,10 +27,12 @@ requirements:
   host:
     - python
     - pip
-    - setuptools >=48,<60
+    - setuptools >=61
     - milksnake
     - setuptools_scm >=4,<6
     - setuptools_scm_git_archive
+    - wheel
+    - build
 
   run:
     - python
