@@ -1,5 +1,7 @@
 :: install python package
-%PYTHON% -m pip install --no-deps -vv . || goto :error
+%PYTHON% -m build --wheel --no-isolation -x || goto :error
+%PYTHON% -m build --sdist --no-isolation -x || goto :error
+%PYTHON% -m pip install --no-deps --no-index --only-binary sourmash --find-links=dist sourmash || goto :error
 
 :: TODO: copy headers to includedir
 
