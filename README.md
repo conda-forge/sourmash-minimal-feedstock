@@ -1,11 +1,11 @@
-About sourmash-minimal
-======================
+About sourmash-minimal-feedstock
+================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sourmash-minimal-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/sourmash-bio/sourmash
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sourmash-minimal-feedstock/blob/main/LICENSE.txt)
 
 Summary: Compute and compare MinHash signatures for DNA data sets.
 
