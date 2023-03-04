@@ -25,7 +25,6 @@ requirements:
     - {{ compiler('c') }}                 # [not win]
     - {{ compiler('m2w64_c') }}           # [win]
     - {{ compiler('rust') }} >=1.56.1
-    - python-build
     - maturin
     - cargo-bundle-licenses
   host:
