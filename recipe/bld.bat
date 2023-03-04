@@ -1,7 +1,13 @@
 :: install python package
-%PYTHON% -m build --wheel --no-isolation -x || goto :error
-%PYTHON% -m build --sdist --no-isolation -x || goto :error
-%PYTHON% -m pip install --no-deps --no-index --only-binary sourmash --find-links=dist sourmash || goto :error
+set "RUSTFLAGS=-C codegen-units=4"
+maturin build -v --jobs 1 --release --strip --manylinux off --interpreter=%PYTHON%
+if errorlevel 1 exit 1
+
+FOR /F "delims=" %%i IN ('dir /s /b target\wheels\*.whl') DO set sourmash_wheel=%%i
+%PYTHON% -m pip install --ignore-installed --no-deps %sourmash_wheel% -vv
+if errorlevel 1 exit 1
+
+cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 :: TODO: copy headers to includedir
 
