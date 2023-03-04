@@ -1,8 +1,25 @@
 #!/bin/bash -euo
 
-set -x
+set -ex
 set -o xtrace -o nounset -o pipefail -o errexit
 
+# https://github.com/rust-lang/cargo/issues/10583#issuecomment-1129997984
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
+
+###################
+# Prepare licenses
+###################
+
+pushd src/core
+# Bundle all downstream library licenses
+cargo-bundle-licenses \
+    --format yaml \
+    --output ${SRC_DIR}/THIRDPARTY.yml
+popd
+
+####################
+# Build shared lib
+####################
 SOEXT=so
 if [ "$(uname)" == "Darwin" ]; then
     SOEXT=dylib
@@ -14,13 +31,6 @@ cargo build --release
 
 cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.${SOEXT} ${PREFIX}/lib/
 cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.a ${PREFIX}/lib/
-
-export NO_BUILD=1
-export DYLD_LIBRARY_PATH=${PREFIX}/lib
-
-$PYTHON -m build --wheel --no-isolation -x
-$PYTHON -m build --sdist --no-isolation -x
-$PYTHON -m pip install --no-deps --no-index --only-binary sourmash --find-links=dist sourmash
 
 mkdir -p ${PREFIX}/lib/pkgconfig
 cat > ${PREFIX}/lib/pkgconfig/sourmash.pc <<"EOF"
@@ -35,3 +45,11 @@ Version: 0.11.0
 Cflags: -I${includedir}
 Libs: -L${libdir} -lsourmash
 EOF
+
+#########################
+# Install python package
+#########################
+
+# Run the maturin build via pip which works for direct and
+# cross-compiled builds.
+$PYTHON -m pip install . -vv
