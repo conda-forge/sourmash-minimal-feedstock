@@ -14,7 +14,7 @@ build:
   number: 0
   missing_dso_whitelist:   # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
-  skip: true  # [py<38]
+  skip: true  # [py<39]
 
 requirements:
   build:
@@ -25,12 +25,12 @@ requirements:
     - {{ compiler('c') }}                 # [not win]
     - {{ compiler('m2w64_c') }}           # [win]
     - {{ compiler('rust') }} >=1.56.1
-    - maturin <0.15  # TODO: remove restriction after next sourmash release
+    - maturin
     - cargo-bundle-licenses
   host:
     - python
     - pip
-    - maturin <0.15  # TODO: remove restriction after next sourmash release
+    - maturin
     - toml
     - cffi
 
