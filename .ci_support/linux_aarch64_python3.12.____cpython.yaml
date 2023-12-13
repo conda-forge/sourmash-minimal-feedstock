@@ -24,3 +24,5 @@ rust_compiler:
 - rust
 target_platform:
 - linux-aarch64
+xz:
+- '5'

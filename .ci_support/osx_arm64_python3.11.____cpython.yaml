@@ -20,3 +20,5 @@ rust_compiler:
 - rust
 target_platform:
 - osx-arm64
+xz:
+- '5'
