@@ -23,6 +23,7 @@ requirements:
     - crossenv                            # [build_platform != target_platform]
     - cffi                                # [build_platform != target_platform]
     - {{ compiler('c') }}                 # [not win]
+    - {{ compiler('cxx') }}               # [not win]
     - {{ compiler('m2w64_c') }}           # [win]
     - {{ compiler('rust') }} >=1.56.1
     - maturin
