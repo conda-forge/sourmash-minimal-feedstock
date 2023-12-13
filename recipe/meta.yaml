@@ -14,7 +14,7 @@ build:
   number: 0
   missing_dso_whitelist:   # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
-  skip: true  # [py<39]
+  skip: true  # [py<310]
 
 requirements:
   build:
@@ -27,6 +27,9 @@ requirements:
     - {{ compiler('rust') }} >=1.56.1
     - maturin
     - cargo-bundle-licenses
+    - libclang                            # [unix]
+    - clangdev                            # [unix]
+    - xz
   host:
     - python
     - pip
@@ -44,7 +47,8 @@ requirements:
     - matplotlib-base
     - scipy
     - bitstring >=3.1.9,<4
-    - importlib_metadata                  # [py<310]
+    - libstdcxx-ng                        # [linux]
+    - libgcc-ng                           # [linux]
 
 test:
   imports:
