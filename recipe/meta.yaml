@@ -7,6 +7,8 @@ package:
 source:
   url: https://pypi.io/packages/source/s/sourmash/sourmash-{{ version }}.tar.gz
   sha256: 9016c338d6b01f152d2c7becf5631000b058ff657f4fc50daa6ef15373d8a02a
+  patches:
+    - patches/0001-fix-deployment-target.patch
 
 build:
   entry_points:
