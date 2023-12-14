@@ -2,15 +2,12 @@ diff --git a/pyproject.toml b/pyproject.toml
 index d96f281..aef5f59 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -150,9 +150,9 @@ module-name = "sourmash._lowlevel"
+@@ -150,7 +150,7 @@ module-name = "sourmash._lowlevel"
  
  # macOS deployment target SDK version
  [tool.maturin.target.x86_64-apple-darwin]
 -macos-deployment-target = "11.0"
-+macos-deployment-target = "10.9"
++macos-deployment-target = "10.14"
  [tool.maturin.target.aarch64-apple-darwin]
--macos-deployment-target = "11.0"
-+macos-deployment-target = "10.9"
- 
- [tool.isort]
- known_third_party = ["deprecation", "hypothesis", "mmh3", "numpy", "pytest", "screed", "sourmash_tst_utils"]
+ macos-deployment-target = "11.0"
+
