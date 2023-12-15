@@ -27,7 +27,7 @@ fi
 
 cp include/sourmash.h ${PREFIX}/include/
 
-cargo build --release
+cargo build --release --features branchwater
 
 cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.${SOEXT} ${PREFIX}/lib/
 cp -a target/${CARGO_BUILD_TARGET}/release/libsourmash.a ${PREFIX}/lib/
