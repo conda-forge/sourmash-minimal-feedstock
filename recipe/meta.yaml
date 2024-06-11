@@ -1,4 +1,4 @@
-{% set version = "4.8.8" %}
+{% set version = "4.8.9" %}
 
 package:
   name: sourmash-minimal
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/s/sourmash/sourmash-{{ version }}.tar.gz
-  sha256: 667da4b014f003032bdffa43318bb5668edbbc55055fe109dab959a914d69842
+  sha256: b11f5eeaf99e6ea58c6d76602a454bb3ed1bf6e8607e6418e01b9722da439fa3
 
 build:
   entry_points:
@@ -23,8 +23,10 @@ requirements:
     - crossenv                            # [build_platform != target_platform]
     - cffi                                # [build_platform != target_platform]
     - {{ compiler('c') }}                 # [not win]
+    - {{ stdlib("c") }}                   # [not win]
     - {{ compiler('cxx') }}               # [not win]
     - {{ compiler('m2w64_c') }}           # [win]
+    - {{ stdlib("m2w64_c") }}             # [win]
     - {{ compiler('rust') }} >=1.65.0
     - maturin
     - cargo-bundle-licenses
@@ -51,7 +53,6 @@ requirements:
     - libstdcxx-ng                        # [linux]
     - libgcc-ng                           # [linux]
     # Due to rocksDB: https://conda-forge.org/docs/maintainer/knowledge_base.html#newer-c-features-with-old-sdk
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   imports:
