@@ -1,0 +1,85 @@
+context:
+  version: 4.8.11
+
+package:
+  name: sourmash-minimal
+  version: ${{ version }}
+
+source:
+  url: https://pypi.io/packages/source/s/sourmash/sourmash-${{ version }}.tar.gz
+  sha256: 1a06a76df464b92685779aaaa6ed02a577bdd73a4ab32972e8134581034d34bf
+
+build:
+  number: 3
+  skip:
+    - py<310
+  python:
+    entry_points:
+      - sourmash = sourmash.__main__:main
+  dynamic_linking:
+    missing_dso_allowlist:
+      - if: osx
+        then: /usr/lib/libresolv.9.dylib
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - if: build_platform != target_platform
+      then: crossenv
+    - if: build_platform != target_platform
+      then: cffi
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('rust') }} >=1.65.0
+    - maturin
+    - cargo-bundle-licenses
+    - if: unix
+      then: libclang
+    - if: unix
+      then: clangdev
+    - xz
+  host:
+    - python
+    - pip
+    - maturin
+    - toml
+    - cffi
+  run:
+    - python
+    - screed >=1.1.2
+    - cffi >=1.17.1
+    - deprecation >=2.0.6
+    - cachetools >=4.2.1,<5
+    - numpy
+    - matplotlib-base
+    - scipy
+    - bitstring >=3.1.9,<4
+
+tests:
+  - python:
+      imports:
+        - sourmash
+      pip_check: false
+  - script:
+      - sourmash --help
+      - sourmash info
+
+about:
+  summary: Compute and compare MinHash signatures for DNA data sets.
+  license: BSD-3-Clause
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  homepage: https://github.com/sourmash-bio/sourmash
+  repository: https://github.com/sourmash-bio/sourmash
+  documentation: https://sourmash.bio/
+
+extra:
+  recipe-maintainers:
+    - luizirber
+    - ctb
+    - bluegenes
