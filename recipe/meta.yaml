@@ -41,7 +41,7 @@ requirements:
   run:
     - python
     - screed >=1.1.2
-    - cffi >=1.14
+    - cffi >=1.17.1
     - deprecation >=2.0.6
     - cachetools >=4.2.1,<5
     - numpy
