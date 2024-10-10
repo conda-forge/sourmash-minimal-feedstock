@@ -11,7 +11,7 @@ source:
 build:
   entry_points:
     - sourmash = sourmash.__main__:main
-  number: 1
+  number: 2
   missing_dso_whitelist:   # [osx]
     - /usr/lib/libresolv.9.dylib  # [osx]
   skip: true  # [py<310]
@@ -22,11 +22,9 @@ requirements:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - crossenv                            # [build_platform != target_platform]
     - cffi                                # [build_platform != target_platform]
-    - {{ compiler('c') }}                 # [not win]
-    - {{ stdlib("c") }}                   # [not win]
-    - {{ compiler('cxx') }}               # [not win]
-    - {{ compiler('m2w64_c') }}           # [win]
-    - {{ stdlib("m2w64_c") }}             # [win]
+    - {{ compiler('c') }}
+    - {{ stdlib("c") }}
+    - {{ compiler('cxx') }}
     - {{ compiler('rust') }} >=1.65.0
     - maturin
     - cargo-bundle-licenses
@@ -43,16 +41,13 @@ requirements:
   run:
     - python
     - screed >=1.1.2
-    - cffi >=1.14
+    - cffi >=1.17.1
     - deprecation >=2.0.6
     - cachetools >=4.2.1,<5
     - numpy
     - matplotlib-base
     - scipy
     - bitstring >=3.1.9,<4
-    - libstdcxx-ng                        # [linux]
-    - libgcc-ng                           # [linux]
-    # Due to rocksDB: https://conda-forge.org/docs/maintainer/knowledge_base.html#newer-c-features-with-old-sdk
 
 test:
   imports:
