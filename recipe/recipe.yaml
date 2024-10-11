@@ -12,7 +12,7 @@ source:
 build:
   number: 3
   skip:
-    - py<310
+    - match(python, "<3.10")
   python:
     entry_points:
       - sourmash = sourmash.__main__:main
