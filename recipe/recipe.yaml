@@ -23,31 +23,34 @@ build:
 
 requirements:
   build:
-    - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
-    - if: build_platform != target_platform
-      then: crossenv
-    - if: build_platform != target_platform
-      then: cffi
     - ${{ compiler('c') }}
-    - ${{ stdlib("c") }}
+    - ${{ stdlib('c') }}
     - ${{ compiler('cxx') }}
     - ${{ compiler('rust') }} >=1.65.0
     - maturin
     - cargo-bundle-licenses
-    - if: unix
-      then: libclang
-    - if: unix
-      then: clangdev
     - xz
+
+    # cross-compilation dependencies
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - crossenv
+        - cffi
+
+    - if: unix
+      then:
+        - libclang
+        - clangdev
+
   host:
     - python
     - pip
     - maturin
     - toml
     - cffi
+
   run:
     - python
     - screed >=1.1.2
