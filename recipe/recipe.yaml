@@ -6,7 +6,7 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://pypi.io/packages/source/s/sourmash/sourmash-${{ version }}.tar.gz
+  url: https://pypi.org/packages/source/s/sourmash/sourmash-${{ version }}.tar.gz
   sha256: 33fd19fb2570a03c4dd7048cd32aaead497600a0080cd655e67bd1cbc6f00524
 
 build:
