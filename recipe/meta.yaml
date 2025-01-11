@@ -8,6 +8,8 @@ package:
 source:
   url: https://pypi.org/packages/source/s/sourmash/sourmash-${{ version }}.tar.gz
   sha256: ddc2eea676239e73d0de9362d8166f98f30177e220e57fa2385845a3ebac915e
+  patches:
+    - 0001-rm-lowlevel-init.patch
 
 build:
   number: 0
