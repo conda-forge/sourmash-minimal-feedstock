@@ -1,3 +1,5 @@
+REM remove foo
+del src\sourmash\_lowlevel\*
 REM Create temp folder
 mkdir tmpbuild_%PY_VER%
 set TEMP=%CD%\tmpbuild_%PY_VER%
