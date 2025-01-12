@@ -1,3 +1,4 @@
+@echo on
 REM remove foo
 del src\sourmash\_lowlevel\*
 REM Create temp folder
