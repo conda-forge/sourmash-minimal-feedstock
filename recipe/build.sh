@@ -18,7 +18,7 @@ cargo-bundle-licenses \
 popd
 
 # CTB: delete unnecessary file for sourmash v4.8.13
-rm -f src/sourmash/_lowlevel/__init__.py
+rm -f src/sourmash/_lowlevel/*
 
 ####################
 # Build shared lib
