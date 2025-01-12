@@ -12,9 +12,7 @@ cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 :: TODO: copy headers to includedir
 
 :: CTB: delete incorrectly packaged file for sourmash v4.8.13.
-del src\sourmash\_lowlevel\__init__.py
-del src\sourmash\_lowlevel\ffi.py
-del src\sourmash\_lowlevel\lib_lowlevel.dylib
+del src\sourmash\_lowlevel\*
 
 :: TODO: cargo build for shared and static libraries
 :: TODO: copy libs to prefix/lib
