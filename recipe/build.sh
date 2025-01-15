@@ -17,9 +17,6 @@ cargo-bundle-licenses \
     --output ${SRC_DIR}/THIRDPARTY.yml
 popd
 
-# CTB: delete unnecessary file for sourmash v4.8.13
-rm -f src/sourmash/_lowlevel/*
-
 ####################
 # Build shared lib
 ####################
