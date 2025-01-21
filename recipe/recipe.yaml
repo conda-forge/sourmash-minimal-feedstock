@@ -29,7 +29,7 @@ requirements:
     - ${{ compiler('rust') }} >=1.65.0
     - maturin
     - cargo-bundle-licenses
-    - xz
+    - liblzma-devel
 
     # cross-compilation dependencies
     - if: build_platform != target_platform
