@@ -1,5 +1,5 @@
 context:
-  version: 4.8.14
+  version: 4.9.0
 
 package:
   name: sourmash-minimal
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/s/sourmash/sourmash-${{ version }}.tar.gz
-  sha256: 9e8f7d5633b529513efc950e25c974c4ecf7c99b4cafbd00f2f135ad0563307f
+  sha256: 74a198e7da94773ba6472bd6f69010ba64b95936fa947adab6369d68628d19db
 
 build:
-  number: 1
+  number: 0
   skip:
-    - match(python, "<3.10")
+    - match(python, "<3.11")
   python:
     entry_points:
       - sourmash = sourmash.__main__:main
