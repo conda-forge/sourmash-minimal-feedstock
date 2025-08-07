@@ -1,5 +1,5 @@
 context:
-  version: 4.9.3
+  version: 4.9.4
 
 package:
   name: sourmash-minimal
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/s/sourmash/sourmash-${{ version }}.tar.gz
-  sha256: bd23e4ae4caefe3a425f2bb1feefb87757674a432eff8e77a3c0932a693a9576
+  sha256: 28889d11041e398831875c7d17a367e3e5937b095d006752e45c7f2302f4626d
 
 build:
   number: 0
