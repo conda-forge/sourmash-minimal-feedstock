@@ -1,5 +1,6 @@
 context:
   version: 4.9.4
+  python_check_max: "3.14"
 
 package:
   name: sourmash-minimal
@@ -10,31 +11,58 @@ source:
   sha256: 28889d11041e398831875c7d17a367e3e5937b095d006752e45c7f2302f4626d
 
 build:
-  number: 1
-  skip:
-    - match(python, "<3.11")
+  number: 2
+  skip: not is_python_min
   python:
+    version_independent: true
     entry_points:
       - sourmash = sourmash.__main__:main
   dynamic_linking:
     missing_dso_allowlist:
       - if: osx
         then: /usr/lib/libresolv.9.dylib
+  script:
+    env:
+      CARGO_PROFILE_RELEASE_STRIP: symbols
+      CARGO_PROFILE_RELEASE_LTO: ${{ "fat" if not linux and (aarch64 or ppc64le) else "thin" }}
+    content:
+      - if: unix
+        then:
+          # Unix recipe
+          - set -ex
+          - set -o xtrace -o nounset -o pipefail -o errexit
+          - if: ppc64le
+            then:
+              # From https://conda-forge.zulipchat.com/#narrow/channel/457337-general/topic/ppc64le.20issues/near/576500347
+              # disable -fno-plt, which causes problems with GCC on PPC
+              - export CFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"
+              - export CXXFLAGS="$(echo $CXXFLAGS | sed 's/-fno-plt //g')"
+              # From https://github.com/conda-forge/rattler-build-feedstock/blob/504fd2e977d6597d2c83332a3e7f0fce023b1d25/recipe/recipe.yaml#L38-L39
+              # Rust 1.90 uses lld by default and has issue linking to conda libraries
+              # compiled with newer gcc
+              - set +u
+              - export RUSTFLAGS="$RUSTFLAGS -C link-arg=-fuse-ld=bfd"
+              - set -u
+      # Run the maturin build via pip which works for direct and cross-compiled builds.
+      - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+      - cd src/core
+      - cargo-bundle-licenses --format yaml --output ${{ SRC_DIR }}/THIRDPARTY.yml
 
 requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - ${{ compiler('cxx') }}
-    - ${{ compiler('rust') }} >=1.65.0
+    - ${{ compiler('rust') }} >=1.85.0
     - maturin
+    - cargo-auditable
     - cargo-bundle-licenses
     - liblzma-devel
 
     # cross-compilation dependencies
     - if: build_platform != target_platform
       then:
-        - python
+        - python ${{ python_min }}.*
         - cross-python_${{ target_platform }}
         - crossenv
         - cffi
@@ -45,14 +73,14 @@ requirements:
         - clangdev
 
   host:
-    - python
+    - python ${{ python_min }}.*
     - pip
     - maturin
     - toml
     - cffi
 
   run:
-    - python
+    - python >=${{ python_min }}
     - screed >=1.1.3
     - cffi >=1.17.1
     - deprecation >=2.0.6
@@ -66,8 +94,14 @@ tests:
   - python:
       imports:
         - sourmash
-      pip_check: false
-  - script:
+      python_version:
+        - ${{ python_min }}.*
+        - ${{ python_check_max }}.*
+      pip_check: true
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
       - sourmash --help
       - sourmash info
 

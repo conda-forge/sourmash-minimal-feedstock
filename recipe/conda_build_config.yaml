@@ -1,5 +1,6 @@
-MACOSX_SDK_VERSION:        # [osx and x86_64]
-  - "10.14"                # [osx and x86_64]
-c_stdlib_version:          # [osx and x86_64]
-  - "10.14"                # [osx and x86_64]
-
+MACOSX_SDK_VERSION:       # [osx and x86_64]
+  - "11.0"                # [osx and x86_64]
+c_stdlib_version:         # [osx and x86_64]
+  - "11.0"                # [osx and x86_64]
+python_min:
+  - "3.11"

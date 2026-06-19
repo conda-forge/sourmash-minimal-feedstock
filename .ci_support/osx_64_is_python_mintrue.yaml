@@ -18,22 +18,18 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '19'
+is_python_min:
+- true
 liblzma_devel:
 - '5'
 macos_machine:
-- arm64-apple-darwin20.0.0
-pin_run_as_build:
-  python:
-    min_pin: x.x
-    max_pin: x.x
-python:
-- 3.13.* *_cp313
+- x86_64-apple-darwin13.4.0
+python_min:
+- '3.11'
 rust_compiler:
 - rust
 target_platform:
-- osx-arm64
+- osx-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - python
-  - channel_sources

@@ -11,23 +11,21 @@ c_stdlib:
 c_stdlib_version:
 - '11.0'
 channel_sources:
-- conda-forge,conda-forge/label/python_rc
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '19'
+is_python_min:
+- true
 liblzma_devel:
 - '5'
 macos_machine:
 - arm64-apple-darwin20.0.0
-pin_run_as_build:
-  python:
-    min_pin: x.x
-    max_pin: x.x
-python:
-- 3.14.* *_cp314
+python_min:
+- '3.11'
 rust_compiler:
 - rust
 target_platform:
@@ -35,5 +33,3 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - python
-  - channel_sources
